@@ -51,6 +51,9 @@ if [ "$target" == "ci_debug" ]; then
     exit 0;
 fi
 
+if [ -d "${buildroot_dir}" ]; then
+    rm -rf ${buildroot_dir}
+fi
 git clone https://github.com/buildroot/buildroot.git ${buildroot_dir} || exit 1
 cd ${buildroot_dir}
 git remote add buildroot-toolchains https://github.com/bootlin/buildroot-toolchains.git || exit 1
